@@ -1,2 +1,2 @@
-# teneh
-TENEH language parser
+# krabbe
+KRABBE message passing system
