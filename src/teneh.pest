@@ -1,0 +1,11 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+COMMENT = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+
+text  = _{ SOI ~ term ~ EOI }
+vowel = @{ ("a" | "o" | "i" | "u" | "e" | "ā" | "ō" | "ī" | "ū" | "ē") }
+cons  = @{ ("b" | "p" | "v" | "f" | "g" | "k" | "d" | "t" | "z" | "s" | "ž" | "š" | "m" | "l" | "n" ) }
+root  = @{ cons ~ vowel ~ cons }
+gram  = @{ vowel ~ cons }
+word  = @{ ( (gram)* ~ (root)+ ~ (gram)* | (gram)+ ) }
+sent  = @{ (word)+ ~ "." }
+term  = @{ (sent | (word)+ ) }
